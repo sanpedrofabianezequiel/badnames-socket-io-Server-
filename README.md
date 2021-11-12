@@ -27,3 +27,7 @@ $ git push heroku master
  - npm i cors
  - const cors    =  require('cors');
  -  this.app.use( cors());
+
+
+
+ - npm i uuid
