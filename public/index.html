@@ -11,27 +11,7 @@
     <h1 class="mt-5">Index</h1>
     <hr>
 
-    <form id="miFormulario">
-        <div class="row"">
-            <div class="col-8">
-                <input type="text"  id ="txtMensaje" placeholder="Mensaje" class="form-control">
-            </div>
-            <div class="col-4">
-                <button type="submit" class="btn btn-primary">
-                    Enviar
-                </button>
-            </div>
-        </div>
-    </form>
-
-
-    <div class="row">
-        <div class="col">
-            <ul id="misMensajes" class="mt-2">
-              
-            </ul>
-        </div>
-    </div>
+    <h1>Bloqueado</h1>
 
 
 
@@ -43,35 +23,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js" integrity="sha512-zN6KYOtONNTOGXz0RkWX2EpavN9VdIs+2w+To+fhciFv83YA9maUpi2lzZWrOfKXdFIZZomWufBznkyHi3a8oQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         //const socket= io('http://localhost:8080');
-        const socket= io('https://san-pedro-socket-react-server.herokuapp.com/');
+        const socket= io('http://localhost:8080');
         
         //Referencias al DOM
-        const formulario =  document.querySelector('#miFormulario');
-        const mensajes   =  document.querySelector('#misMensajes');
-        const txtMensaje =  document.querySelector('#txtMensaje');
+        //const formulario =  document.querySelector('#miFormulario');
 
-        formulario.addEventListener('submit',(e)=>{
-            e.preventDefault();
-            socket.emit('mensaje-to-server',{texto:txtMensaje.value});
-        });
 
-        socket.on('mensaje-from-server',(data)=>{
-            mensajes.innerHTML += `<li>${data.texto}</li>`;
+        socket.on('current-bands',(data)=>{
+           console.log(data);
         })
 
-        /*socket.on('mensaje-bienvenida',(data)=>{
-            console.log(data)
-        })*/
-
-
-        
-        /*setTimeout(() => {
-            socket.emit('mensaje-cliente',{
-            msg:"bienvenido a cliente",
-            fecha : new Date()
-            })
-        }, 2000);*/
-       
     </script>
 </body>
 </html>
